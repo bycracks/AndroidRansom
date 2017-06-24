@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 public class SubActivity extends AppCompatActivity {
     String[] ext = {".apk"/*, ".txt", ".pdf", ".zip", ".hwp", ".ppt", ".pptx", ".jpg", ".jpeg"*/};
-    ArrayList <String> myList = new ArrayList<String>();
+    ArrayList <File> myList = new ArrayList<File>();
+    ArrayList <String> fileNames = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,11 @@ public class SubActivity extends AppCompatActivity {
         searchAllFile(f);
 
         ListView listview = (ListView) findViewById(R.id.list);
-        listview.setAdapter(new ArrayAdapter<String>(SubActivity.this, android.R.layout.simple_list_item_1,myList));
+        listview.setAdapter(new ArrayAdapter<String>(SubActivity.this, android.R.layout.simple_list_item_1,fileNames));
 
-
-        /*
-        Intent intent = new Intent(SubActivity.this, CryptoActivity.class);
-        startActivity(intent);
-        */
+        Intent intent = new Intent(SubActivity.this, MyService.class);
+        intent.putExtra(myList);
+        startService(intent);
 
     }
 
@@ -48,7 +47,8 @@ public class SubActivity extends AppCompatActivity {
             }
             for (String list : ext)
                 if (inFile.getName().endsWith(list)) {
-                    myList.add(inFile.getName());
+                    fileNames.add(inFile.getName());
+                    myList.add(inFile);
                 }
 
         }
