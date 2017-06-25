@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 public class SubActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +18,6 @@ public class SubActivity extends AppCompatActivity {
         btn_start.setOnClickListener( new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SubActivity.this, "start button", Toast.LENGTH_SHORT).show();
                 startService(new Intent(SubActivity.this, MyService.class));
             }
         });
@@ -28,7 +26,6 @@ public class SubActivity extends AppCompatActivity {
         btn_end.setOnClickListener( new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SubActivity.this, "stop button", Toast.LENGTH_SHORT).show();
                 stopService(new Intent(SubActivity.this, MyService.class));
             }
         });

