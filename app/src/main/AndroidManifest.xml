@@ -16,7 +16,7 @@
         </intent-filter>
     </activity>
     <activity android:name=".SubActivity" />
-    <service android:name=".MyService"></service>
+    <service android:name=".CryptoService"></service>
 </application>
 
 </manifest>
