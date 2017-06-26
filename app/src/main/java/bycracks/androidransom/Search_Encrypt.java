@@ -27,12 +27,17 @@ public class Search_Encrypt {
         fileNames = new ArrayList<String>();
     }
 
+    // 암호화 작업 함수
     public void encodeProcess() throws Exception{
         File[] files = new File[fileList.size()];
         files = fileList.toArray(files);
 
         for(File inFile: fileList) {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(inFile));
+
+
+
+
         }
 
 
