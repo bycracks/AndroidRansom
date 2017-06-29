@@ -56,7 +56,7 @@ public class Crypto {
             int bytesRead;
 
             if (decrypt) {
-                FileOutputStream fos = new FileOutputStream(inFile.getPath().substring(0,idx1)+"/decrypt/"+inFile.getName().substring(0,idx2));
+                FileOutputStream fos = new FileOutputStream(inFile.getPath().substring(0,idx1+1)+inFile.getName().substring(0,idx2));
 
                 cipher.init(Cipher.DECRYPT_MODE, skeySpec);
                 CipherInputStream cis = new CipherInputStream(fis, cipher);     // decrypt
